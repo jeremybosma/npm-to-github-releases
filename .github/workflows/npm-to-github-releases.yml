@@ -27,10 +27,12 @@ jobs:
       - name: Set and push version from release tag
         run: |
           git checkout -b main
+          npm ci
           VERSION=${GITHUB_REF#refs/tags/v}
           npm version $VERSION --no-git-tag-version
           git add .
           git commit -m "Bump to $VERSION"
           git push --set-upstream origin main
-    #   - run: npm ci
-    #   - run: npm publish --provenance --access public
+      - run: npm publish --provenance --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
