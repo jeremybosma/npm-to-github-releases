@@ -11,9 +11,12 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Configure Git
+        env:
+          USER_NAME: ${{ secrets.USER_NAME }}
+          USER_EMAIL: ${{ secrets.USER_EMAIL }}
         run: |
-          git config user.name ${{ secrets.USER_NAME }}
-          git config user.email ${{ secrets.USER_EMAIL }}
+          git config user.name ${USER_NAME}
+          git config user.email ${USER_EMAIL}
       - name: Authenticate with Git
         env:
           GITHUB_TOKEN: ${{ secrets.GHP_TOKEN }}
@@ -22,8 +25,8 @@ jobs:
       # Setup .npmrc file to publish to npm
       - uses: actions/setup-node@v4
         with:
-          node-version: "20.x"
-          registry-url: "https://registry.npmjs.org"
+          node-version: '20.x'
+          registry-url: 'https://registry.npmjs.org'
       - name: Set and push version from release tag
         run: |
           git checkout -b main
