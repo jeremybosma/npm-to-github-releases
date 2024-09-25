@@ -31,6 +31,6 @@ jobs:
           npm version $VERSION --no-git-tag-version
           git add .
           git commit -m "Bump to $VERSION"
-          git push
+          git push --set-upstream origin main
     #   - run: npm ci
     #   - run: npm publish --provenance --access public
