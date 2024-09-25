@@ -12,8 +12,8 @@ jobs:
       - uses: actions/checkout@v4
       - name: Configure Git
         run: |
-          git config user.name github-actions
-          git config user.email github-actions@github.com
+          git config user.name jeremybosma
+          git config user.email jectaunscripted@gmail.com
       - name: Authenticate with Git
         env:
           GITHUB_TOKEN: ${{ secrets.GHP_TOKEN }}
