@@ -19,7 +19,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GHP_TOKEN }}
         run: |
           git remote set-url origin https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
-      - run: git checkout -b main
+      - run: git checkout -b origin/main
       # Setup .npmrc file to publish to npm
       - uses: actions/setup-node@v4
         with:
