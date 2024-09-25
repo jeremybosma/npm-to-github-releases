@@ -11,7 +11,7 @@ USER_EMAIL - The value of secret this needs to be the same as the email you sign
 
 #### Getting your GHP_TOKEN
 
-https://github.com/settings/tokens?type=beta
+https://github.com/settings/tokens
 
 #### Getting your NPM_TOKEN
 
