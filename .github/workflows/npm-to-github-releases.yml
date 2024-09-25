@@ -10,7 +10,7 @@ jobs:
       id-token: write
     steps:
       - uses: actions/checkout@v4
-      - run: git checkout main
+      - run: git checkout -b main
       # Setup .npmrc file to publish to npm
       - uses: actions/setup-node@v4
         with:
@@ -20,6 +20,6 @@ jobs:
         run: |
           VERSION=${GITHUB_REF#refs/tags/v}
           npm version $VERSION --no-git-tag-version
-      - run: git push
+      - run: git push -u origin main
     #   - run: npm ci
     #   - run: npm publish --provenance --access public
