@@ -19,7 +19,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GHP_TOKEN }}
         run: |
           git remote set-url origin https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
-      - run: git checkout -b origin/main
       # Setup .npmrc file to publish to npm
       - uses: actions/setup-node@v4
         with:
@@ -27,10 +26,11 @@ jobs:
           registry-url: "https://registry.npmjs.org"
       - name: Set and push version from release tag
         run: |
+          git checkout -b main
           VERSION=${GITHUB_REF#refs/tags/v}
           npm version $VERSION --no-git-tag-version
           git add .
           git commit -m "Bump to $VERSION"
-          git push -u origin main
+          git push
     #   - run: npm ci
     #   - run: npm publish --provenance --access public
